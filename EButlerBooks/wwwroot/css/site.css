@@ -70,3 +70,77 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.featured {
+   
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+
+/* Books */
+.book {
+    
+    display: inline-block;
+    box-shadow: 5px 5px 20px #333;
+    margin: 10px;
+}
+
+    .book img {
+        vertical-align: middle;
+    }
+
+.books {
+    -moz-perspective: 100px;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.book {
+    position: relative;
+    -moz-perspective: 100px;
+    -moz-transform: rotateY(-3deg);
+    -webkit-transform: perspective(100) rotateY(-3deg);
+    outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+    box-shadow: none;
+    margin: 0;
+}
+
+    .book img {
+        position: relative;
+        max-width: 100%;
+    }
+
+    .book .img {
+        padding: 2rem;
+        height: 20rem;
+        width: 12rem;
+        /*font-size: 2rem;*/
+        background-color: #ada5bb;
+    }
+
+    .book:before,
+    .book:after {
+        position: absolute;
+        top: 2%;
+        height: 96%;
+        content: ' ';
+        z-index: -1;
+    }
+
+    .book:before {
+        width: 100%;
+        left: 7.5%;
+        background-color: #5a2d18;
+        box-shadow: 5px 5px 20px #333;
+    }
+
+    .book:after {
+        width: 5%;
+        left: 100%;
+        background-color: #EFEFEF;
+        box-shadow: inset 0px 0px 5px #aaa;
+        -moz-transform: rotateY(20deg);
+        -webkit-transform: perspective(100) rotateY(20deg);
+    }
