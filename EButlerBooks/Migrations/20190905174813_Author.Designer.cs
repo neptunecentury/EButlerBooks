@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EButlerBooks.Migrations
 {
     [DbContext(typeof(DbEntities))]
-    [Migration("20190905114153_author")]
-    partial class author
+    [Migration("20190905174813_Author")]
+    partial class Author
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,14 @@ namespace EButlerBooks.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Eric",
+                            LastName = "Butler"
+                        });
                 });
 
             modelBuilder.Entity("EButlerBooks.Models.Book", b =>

@@ -3,12 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EButlerBooks.Migrations
 {
-    public partial class author : Migration
+    public partial class Author : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
                 name: "AuthorId",
+                table: "Books",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Description",
+                table: "Books",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "FullDescription",
+                table: "Books",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "ImageUrl",
                 table: "Books",
                 nullable: true);
 
@@ -25,6 +40,11 @@ namespace EButlerBooks.Migrations
                 {
                     table.PrimaryKey("PK_Authors", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "FirstName", "LastName" },
+                values: new object[] { 1, "Eric", "Butler" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
@@ -55,6 +75,18 @@ namespace EButlerBooks.Migrations
 
             migrationBuilder.DropColumn(
                 name: "AuthorId",
+                table: "Books");
+
+            migrationBuilder.DropColumn(
+                name: "Description",
+                table: "Books");
+
+            migrationBuilder.DropColumn(
+                name: "FullDescription",
+                table: "Books");
+
+            migrationBuilder.DropColumn(
+                name: "ImageUrl",
                 table: "Books");
         }
     }

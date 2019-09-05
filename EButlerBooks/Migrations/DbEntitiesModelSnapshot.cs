@@ -35,6 +35,14 @@ namespace EButlerBooks.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Eric",
+                            LastName = "Butler"
+                        });
                 });
 
             modelBuilder.Entity("EButlerBooks.Models.Book", b =>
