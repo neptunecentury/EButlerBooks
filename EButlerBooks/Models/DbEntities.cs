@@ -17,6 +17,7 @@ namespace EButlerBooks.Models
            
         }
 
+        DbSet<Author> Authors { get; set; }
         DbSet<Book> Books { get; set; }
     }
 }
