@@ -4,32 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-    <div class="d-flex" style="margin-top: 10rem; padding: 0 10rem 0 10rem;">
-        <div class="books mr-5">
-            <div class="book">
-                <div class="img text-center pt-5 text-uppercase">
-                    <h3 class="">Dark World</h3>
-                    <small class="small mt-5">A Novel</small>
-                    <p class="mt-5">
-                        Eric
-                        <br />
-                        Butler
-                    </p>
-                </div>
+<div class="d-flex" style="margin-top: 10rem; padding: 0 10rem 0 10rem;">
+    <div class="books mr-5">
+        <div class="book">
+            <div class="img text-center pt-5 text-uppercase">
+                <h3 class="">Dark World</h3>
+                <small class="small mt-5">A Novel</small>
+                <p class="mt-5">
+                    Eric
+                    <br />
+                    Butler
+                </p>
             </div>
         </div>
-
-        <div class="featured ml-auto w-100">
-            This is a cool book
-        </div>
-
     </div>
 
+    <div class="featured ml-auto w-100">
+        This is a cool book
+    </div>
 
+</div>
 
-@*<div class="container bg-white shadow">
-        <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        </div>
-    </div>*@
+@section styles{
+    <style>
+        body {
+            background-image: url('/img/dark-world-light.jpg');
+        }
+    </style>
+}
