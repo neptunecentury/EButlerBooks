@@ -36,11 +36,14 @@ namespace EButlerBooks
 
 
             services.AddRazorPages();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
             services.AddDbContext<DbEntities>(options =>
             {
                 options.UseSqlServer(connString);
             }
             );
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,47 +3,22 @@ using EButlerBooks.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EButlerBooks.Migrations
 {
     [DbContext(typeof(DbEntities))]
-    partial class DbEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20191216212043_GenreAndAppSettings")]
+    partial class GenreAndAppSettings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("EButlerBooks.Models.AppSettings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BannerImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FeaturedBookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FeaturedBookId");
-
-                    b.ToTable("AppSettings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FeaturedBookId = 1
-                        });
-                });
 
             modelBuilder.Entity("EButlerBooks.Models.Author", b =>
                 {
@@ -182,7 +157,7 @@ namespace EButlerBooks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genre");
 
                     b.HasData(
                         new
@@ -195,15 +170,6 @@ namespace EButlerBooks.Migrations
                             Id = 2,
                             Name = "Science Fiction"
                         });
-                });
-
-            modelBuilder.Entity("EButlerBooks.Models.AppSettings", b =>
-                {
-                    b.HasOne("EButlerBooks.Models.Book", "FeaturedBook")
-                        .WithMany()
-                        .HasForeignKey("FeaturedBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("EButlerBooks.Models.BookAuthors", b =>
