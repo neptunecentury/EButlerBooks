@@ -25,12 +25,7 @@ namespace EButlerBooks.Models
             modelBuilder.Entity<BookAuthors>().HasKey(sc => new { sc.AuthorId, sc.BookId });
             // Book genres
             modelBuilder.Entity<BookGenres>().HasKey(sc => new { sc.GenreId, sc.BookId });
-
-            //modelBuilder.Entity<Book>()
-            //    .HasOne<AppSettings>()
-            //    .WithMany()
-            //    .HasForeignKey(e => e.Id);
-
+                        
             // Initialize the DB with data
             // Genres
             modelBuilder.Entity<Genre>().HasData(new Genre { Id = 1, Name = "Fantasy" });
@@ -51,6 +46,12 @@ namespace EButlerBooks.Models
 
             modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 2 });
             modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 2, GenreId = 2 });
+
+            // Fantasy
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 3, Title = "Fantasy", Description = "Boy kidnaps girl", FullDescription = "Boy kidnaps girl and takes her to a fantasy realm to help him find his long-lost sister." });
+
+            modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 3 });
+            modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 3, GenreId = 1 });
 
             // App settings
             modelBuilder.Entity<AppSettings>().HasData(new AppSettings { Id = 1, FeaturedBookId = 1 });
