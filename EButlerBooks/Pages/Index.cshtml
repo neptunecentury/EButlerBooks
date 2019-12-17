@@ -11,7 +11,7 @@
             <div class="books mr-5">
                 <div class="book">
                     <div class="img text-center pt-5 text-uppercase">
-                        <h3 class="">Dark World</h3>
+                        <h3 class="">@Model.FeaturedBook?.Title</h3>
                         <small class="small mt-5">A Novel</small>
                         <p class="mt-5">
                             Eric
@@ -23,7 +23,7 @@
             </div>
 
             <div class="featured ml-auto w-100">
-                This is a cool book
+                @Model.FeaturedBook?.Description
             </div>
 
         </div>

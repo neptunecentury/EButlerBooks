@@ -14,7 +14,7 @@ namespace EButlerBooks.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly DbEntities _db;
-        private Book _featuredBook;
+        public Book FeaturedBook { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, DbEntities db)
         {
@@ -28,7 +28,8 @@ namespace EButlerBooks.Pages
             var appSettings = (from s in _db.AppSettings.Include(a => a.FeaturedBook)
                                where s.Id == 1
                                select s).FirstOrDefault();
-            //_featuredBook = appSettings?.FeaturedBook;
+
+            FeaturedBook = appSettings?.FeaturedBook;
         }
     }
 }
