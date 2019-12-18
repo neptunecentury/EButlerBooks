@@ -80,7 +80,7 @@ body {
 
 
 /* Books */
-.book {
+/*.book {
     
     display: inline-block;
     box-shadow: 5px 5px 20px #333;
@@ -89,15 +89,17 @@ body {
 
     .book img {
         vertical-align: middle;
-    }
+    }*/
 
 .books {
+    display: flex;
     -moz-perspective: 100px;
     -moz-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 }
 
 .book {
+    display: inline-block;
     position: relative;
     -moz-perspective: 100px;
     -moz-transform: rotateY(-3deg);

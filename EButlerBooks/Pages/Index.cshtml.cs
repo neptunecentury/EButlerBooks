@@ -37,7 +37,6 @@ namespace EButlerBooks.Pages
 
             // Get all the books
             Books = (from s in _db.Books.Include(b => b.BookAuthors).ThenInclude(ba => ba.Author)
-                     where s.Id == 1
                      select s).ToArray();
         }
     }
