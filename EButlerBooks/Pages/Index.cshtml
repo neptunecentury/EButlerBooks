@@ -7,55 +7,57 @@
 @* If we have a featured book, show it here*@
 @if (Model.FeaturedBook != null)
 {
-    <div style="background-image: url('/img/dark-world-light.jpg'); height: 30rem; padding: 5rem 0 5rem 0;">
-        <div class="container">
+    @*<div style="background-image: url('/img/dark-world-light.jpg'); height: 30rem; padding: 5rem 0 5rem 0;">*@
+    <div class="container" style="padding: 10rem 0;">
 
-            <div class="d-flex align-items-start " style="padding: 0 10rem 0 10rem;">
-                <div class="books mr-5">
-                    <div class="book">
-                        <div class="img text-center pt-5 text-uppercase">
+        <div class="d-flex align-items-start " style="padding: 0 10rem;">
+            <div class="books mr-5">
+                <div class="book">
+                    <div class="img text-center pt-5 text-uppercase">
 
-                            @*If there is no cover art, use the title and first author to generate one*@
-                            @if (Model.FeaturedBook.ImageUrl == null)
-                            {
-                                <h3 class="">@Model.FeaturedBook.Title</h3>
-                                <small class="small mt-5">A Novel</small>
-                                <p class="mt-5">
-                                    @Model.FeaturedBook.BookAuthors.FirstOrDefault()?.Author.FullName
-                                </p>
-                            }
+                        @*If there is no cover art, use the title and first author to generate one*@
+                        @if (Model.FeaturedBook.ImageUrl == null)
+                        {
+                            <h3 class="">@Model.FeaturedBook.Title</h3>
+                            <small class="small mt-5">A Novel</small>
+                            <p class="mt-5">
+                                @Model.FeaturedBook.BookAuthors.FirstOrDefault()?.Author.FullName
+                            </p>
+                        }
 
-                        </div>
                     </div>
                 </div>
-
-                <div class="featured ml-auto w-100">
-                    @Model.FeaturedBook.Description
-                </div>
-
             </div>
+
+            <div class="featured ml-auto w-100">
+                @Model.FeaturedBook.Description
+            </div>
+
         </div>
     </div>
+    @*</div>*@
 }
 
 @*This section lists all works*@
-<div class="container">
-    <div class="books mr-5">
+<div class="container shadow-lg" style="background-color: rgba(255,255,255,.60);">
+    <div class="books d-flex flex-column mr-5">
         @foreach (var book in Model.Books)
         {
-            <div class="book">
-                <div class="img text-center pt-5 text-uppercase">
+            <div class="py-5">
+                <div class="book">
+                    <div class="img text-center pt-5 text-uppercase">
 
-                    @*If there is no cover art, use the title and first author to generate one*@
-                    @if (book.ImageUrl == null)
-                    {
-                        <h3 class="">@book.Title</h3>
-                        <small class="small mt-5">A Novel</small>
-                        <p class="mt-5">
-                            @book.BookAuthors.FirstOrDefault()?.Author.FullName
-                        </p>
-                    }
+                        @*If there is no cover art, use the title and first author to generate one*@
+                        @if (book.ImageUrl == null)
+                        {
+                            <h3 class="">@book.Title</h3>
+                            <small class="small mt-5">A Novel</small>
+                            <p class="mt-5">
+                                @book.BookAuthors.FirstOrDefault()?.Author.FullName
+                            </p>
+                        }
 
+                    </div>
                 </div>
             </div>
         }
@@ -64,5 +66,9 @@
 </div>
 
 @section styles{
-
+    <style>
+        body {
+            background: url('/img/dark-world-light.jpg') no-repeat;
+        }
+    </style>
 }

@@ -80,19 +80,8 @@ body {
 
 
 /* Books */
-/*.book {
-    
-    display: inline-block;
-    box-shadow: 5px 5px 20px #333;
-    margin: 10px;
-}
-
-    .book img {
-        vertical-align: middle;
-    }*/
-
 .books {
-    display: flex;
+    
     -moz-perspective: 100px;
     -moz-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
