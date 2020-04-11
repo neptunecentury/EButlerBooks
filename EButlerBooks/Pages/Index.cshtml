@@ -1,38 +1,44 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
 @* If we have a featured book, show it here*@
 @if (Model.FeaturedBook != null)
 {
     @*<div style="background-image: url('/img/dark-world-light.jpg'); height: 30rem; padding: 5rem 0 5rem 0;">*@
-    <div class="container" style="padding: 10rem 0;">
+    <div class="container">
+        <div class="d-flex">
 
-        <div class="d-flex align-items-start " style="padding: 0 10rem;">
-            <div class="books mr-5">
-                <div class="book">
-                    <div class="img text-center pt-5 text-uppercase">
-
+            <div class="featured d-flex flex-column flex-lg-row align-items-start mt-5 mb-5 mx-auto ">
+                <div class="books mx-auto ml-lg-0 mr-lg-5">
+                    <div class="book">
                         @*If there is no cover art, use the title and first author to generate one*@
                         @if (Model.FeaturedBook.ImageUrl == null)
                         {
-                            <h3 class="">@Model.FeaturedBook.Title</h3>
-                            <small class="small mt-5">A Novel</small>
-                            <p class="mt-5">
-                                @Model.FeaturedBook.BookAuthors.FirstOrDefault()?.Author.FullName
-                            </p>
+                            <div class="img text-center pt-5 text-uppercase">
+                                <div class="h3">@Model.FeaturedBook.Title</div>
+                                <small class="small mt-5">A Novel</small>
+                                <p class="mt-5">
+                                    @Model.FeaturedBook.BookAuthors.FirstOrDefault()?.Author.FullName
+                                </p>
+                            </div>
                         }
+                        else
+                        {
+                            <img src="@Model.FeaturedBook.ImageUrl" alt="@Model.FeaturedBook.Title" />
+                        }
+
 
                     </div>
                 </div>
-            </div>
 
-            <div class="featured ml-auto w-100">
-                @Model.FeaturedBook.Description
-            </div>
+                <div class="featured-description w-100 mt-5 mt-lg-0">
+                    @await Html.PartialAsync("_BookDescriptionPartial", Model.FeaturedBook)
+                </div>
 
+            </div>
         </div>
     </div>
     @*</div>*@
@@ -40,25 +46,33 @@
 
 @*This section lists all works*@
 <div class="container shadow-lg" style="background-color: rgba(255,255,255,.60);">
-    <div class="books d-flex flex-column mr-5">
+    <div class="d-flex flex-column">
         @foreach (var book in Model.Books)
         {
-            <div class="py-5">
-                <div class="book">
-                    <div class="img text-center pt-5 text-uppercase">
-
-                        @*If there is no cover art, use the title and first author to generate one*@
-                        @if (book.ImageUrl == null)
-                        {
-                            <h3 class="">@book.Title</h3>
+            <div class="d-flex flex-column flex-lg-row align-items-start mt-3 pb-lg-3 border-bottom">
+                <div class="book-flat mx-auto mx-lg-0">
+                    @*If there is no cover art, use the title and first author to generate one*@
+                    @if (book.ImageUrl == null)
+                    {
+                        <div class="img text-center text-uppercase">
+                            <div class="h3">@book.Title</div>
                             <small class="small mt-5">A Novel</small>
                             <p class="mt-5">
                                 @book.BookAuthors.FirstOrDefault()?.Author.FullName
                             </p>
-                        }
+                        </div>
+                    }
+                    else
+                    {
+                        <img src="@book.ImageUrl" alt="@book.Title" />
+                    }
 
-                    </div>
                 </div>
+
+                <div class=" w-100 mt-5 mb-1 mt-lg-0 ml-lg-5 text-center text-lg-left">
+                    @await Html.PartialAsync("_BookDescriptionPartial", book)
+                </div>
+
             </div>
         }
 
@@ -67,8 +81,8 @@
 
 @section styles{
     <style>
-        body {
-            background: url('/img/dark-world-light.jpg') no-repeat;
+        body.featured-image {
+            background-image: url('/img/dark-world-light.jpg');
         }
     </style>
 }

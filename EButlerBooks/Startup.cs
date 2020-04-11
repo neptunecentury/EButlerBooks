@@ -28,7 +28,7 @@ namespace EButlerBooks
         public void ConfigureServices(IServiceCollection services)
         {
             // Replace connection string tokens
-            var connString = Configuration.GetConnectionString("default");
+            var connString = Configuration.GetConnectionString("DefaultConnection");
             if (connString.Contains("%CONTENTROOTPATH%"))
             {
                 connString = connString.Replace("%CONTENTROOTPATH%", Env.ContentRootPath);

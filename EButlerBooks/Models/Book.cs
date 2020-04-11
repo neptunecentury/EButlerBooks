@@ -12,6 +12,8 @@ namespace EButlerBooks.Models
         public string Description { get; set; }
         public string FullDescription { get; set; }
         public string ImageUrl { get; set; }
+        public string ThumbImageUrl { get; set; }
+        public bool ComingSoon { get; set; }
         public IList<BookAuthors> BookAuthors { get; set; }
         public IList<BookGenres> BookGenres { get; set; }
     }

@@ -2,89 +2,92 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: #e5e5e5;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
+    body.featured-image {
+        background-color: #e5e5e5;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 .featured {
-   
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, .25);
-    color: #fff;
+    max-width: 75%;
 }
+
+    .featured .featured-description {
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, .25);
+        color: #fff;
+    }
 
 
 /* Books */
 .books {
-    
     -moz-perspective: 100px;
     -moz-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    flex-basis: 12rem;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .book {
@@ -96,18 +99,17 @@ body {
     outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
     box-shadow: none;
     margin: 0;
+    width: 12rem;
+    height: 19.2rem;
 }
 
     .book img {
-        position: relative;
         max-width: 100%;
     }
 
     .book .img {
         padding: 2rem;
-        height: 20rem;
-        width: 12rem;
-        /*font-size: 2rem;*/
+        height: 100%;
         background-color: #ada5bb;
     }
 
@@ -135,3 +137,41 @@ body {
         -moz-transform: rotateY(20deg);
         -webkit-transform: perspective(100) rotateY(20deg);
     }
+
+/*Flat book for list*/
+.book-flat {
+    position: relative;
+    width: 10rem;
+    flex-basis: 10rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 16rem;
+}
+
+    .book-flat img {
+        max-width: 100%;
+    }
+
+    .book-flat .img {
+        padding: 2rem;
+        background-color: #ada5bb;
+        height: 100%;
+    }
+
+        .book-flat .img .h3 {
+            font-size: 1.25em;
+        }
+
+
+@media screen and (max-width: 992px) {
+
+    .featured {
+        max-width: 100%;
+    }
+
+    .book-flat {
+        width: 8rem;
+        flex-basis: 8rem;
+        height: 12.8rem;
+    }
+}
