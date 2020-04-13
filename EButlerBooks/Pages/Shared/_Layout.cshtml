@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - E. C. Butler</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css?v1" />
 
     @RenderSection("styles", required: false)
 </head>
@@ -37,7 +37,7 @@
     </main>
     
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - E. C. Butler - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>

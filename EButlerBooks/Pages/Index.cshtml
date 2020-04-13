@@ -15,7 +15,7 @@
                 <div class="books mx-auto ml-lg-0 mr-lg-5">
                     <div class="book">
                         @*If there is no cover art, use the title and first author to generate one*@
-                        @if (Model.FeaturedBook.ImageUrl == null)
+                        @if (Model.FeaturedBook.ThumbImageUrl == null)
                         {
                             <div class="img text-center pt-5 text-uppercase">
                                 <div class="h3">@Model.FeaturedBook.Title</div>
@@ -27,7 +27,7 @@
                         }
                         else
                         {
-                            <img src="@Model.FeaturedBook.ImageUrl" alt="@Model.FeaturedBook.Title" />
+                            <img src="@Model.FeaturedBook.ThumbImageUrl" alt="@Model.FeaturedBook.Title" />
                         }
 
 
@@ -45,14 +45,14 @@
 }
 
 @*This section lists all works*@
-<div class="container shadow-lg" style="background-color: rgba(255,255,255,.60);">
+<div class="container shadow-lg" style="background-color: rgba(255,255,255,.80);">
     <div class="d-flex flex-column">
         @foreach (var book in Model.Books)
         {
             <div class="d-flex flex-column flex-lg-row align-items-start mt-3 pb-lg-3 border-bottom">
                 <div class="book-flat mx-auto mx-lg-0">
                     @*If there is no cover art, use the title and first author to generate one*@
-                    @if (book.ImageUrl == null)
+                    @if (book.ThumbImageUrl == null)
                     {
                         <div class="img text-center text-uppercase">
                             <div class="h3">@book.Title</div>
@@ -64,7 +64,7 @@
                     }
                     else
                     {
-                        <img src="@book.ImageUrl" alt="@book.Title" />
+                        <img src="@book.ThumbImageUrl" alt="@book.Title" />
                     }
 
                 </div>
@@ -82,7 +82,7 @@
 @section styles{
     <style>
         body.featured-image {
-            background-image: url('/img/dark-world-light.jpg');
+            background-image: url('/img/dark-world-background.jpg');
         }
     </style>
 }
