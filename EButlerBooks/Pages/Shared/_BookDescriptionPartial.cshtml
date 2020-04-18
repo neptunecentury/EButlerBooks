@@ -1,13 +1,22 @@
 ﻿@model EButlerBooks.Models.Book
 
-<div class="mb-3">
-    @if (Model.ComingSoon)
-    {
-        <span class="badge badge-warning">Coming Soon</span>
-        <br />
-    }
-    @Html.Raw(Model.Description.Replace(System.Environment.NewLine, "<br />"))
-</div>
+    <div class="mb-3">
+        @if (Model.ComingSoon)
+        {
+            <span class="badge badge-warning">Coming Soon</span>
+            <br />
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            @Html.Raw(Model.Description.Replace(System.Environment.NewLine, "<br />"))
+        }
+        else
+        {
+            <span>Description coming soon!</span>
+        }
+        
+    </div>
 <p>
-    <a href="#" class="btn btn-info">Learn More</a>
+    <a class="btn btn-info" asp-page="/Books/Book" asp-route-url="@Model.Url">Learn More</a>
 </p>

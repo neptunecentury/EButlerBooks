@@ -41,9 +41,13 @@ namespace EButlerBooks
             services.AddDbContext<DbEntities>(options =>
             {
                 options.UseSqlServer(connString);
-            }
-            );
-            
+            });
+
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

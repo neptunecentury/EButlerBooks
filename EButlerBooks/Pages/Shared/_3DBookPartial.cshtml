@@ -1,0 +1,23 @@
+﻿@model EButlerBooks.Models.Book
+
+<div class="books mx-auto ml-lg-0 mr-lg-5">
+    <div class="book">
+        @*If there is no cover art, use the title and first author to generate one*@
+        @if (Model.ThumbImageUrl == null)
+        {
+            <div class="img text-center pt-5 text-uppercase">
+                <div class="h3">@Model.Title</div>
+                <small class="small mt-5">A Novel</small>
+                <p class="mt-5">
+                    @Model.BookAuthors.FirstOrDefault()?.Author.FullName
+                </p>
+            </div>
+        }
+        else
+        {
+            <img src="@Model.ThumbImageUrl" alt="@Model.Title" />
+        }
+
+
+    </div>
+</div>

@@ -5,6 +5,10 @@
     {
       "library": "vue@2.6.10",
       "destination": "wwwroot/lib/vue/"
+    },
+    {
+      "library": "enquire.js@2.1.6",
+      "destination": "wwwroot/lib/enquire/"
     }
   ]
 }

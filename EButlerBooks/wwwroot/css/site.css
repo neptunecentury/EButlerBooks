@@ -1,5 +1,16 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /* Margin bottom by footer height */
+    /*margin-bottom: 60px;*/
+    background-color: #e5e5e5;
+}
+
 
 a.navbar-brand {
     white-space: normal;
@@ -7,30 +18,20 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+.featured-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-
-/* Sticky footer styles
--------------------------------------------------- */
 html {
-    position: relative;
     min-height: 100%;
 }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-}
 
-    body.featured-image {
-        background-color: #e5e5e5;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
 
-.footer {
-    position: absolute;
-    bottom: 0;
+footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
     width: 100%;
     background-color: rgba(0, 0, 0, 0.80);
     white-space: nowrap;
@@ -42,11 +43,13 @@ body {
 }
 
     .featured .featured-description {
-        padding: 1rem;
-        background-color: rgba(0, 0, 0, .25);
+        background-color: rgba(0, 0, 0, .50);
         color: #fff;
     }
 
+.bg-transparent-light {
+    background-color: rgba(255, 255, 255, 0.75)
+}
 
 /* Books */
 .books {

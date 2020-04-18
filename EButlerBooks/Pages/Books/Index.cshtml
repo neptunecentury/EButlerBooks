@@ -1,0 +1,10 @@
+﻿@page
+@model EButlerBooks.Pages.Books.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="mt-3">
+    @*This section lists all works*@
+    @await Html.PartialAsync("_BooksListPartial", Model.Books)
+</div>
