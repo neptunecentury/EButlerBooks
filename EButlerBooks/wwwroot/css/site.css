@@ -51,6 +51,14 @@ footer {
     background-color: rgba(255, 255, 255, 0.75)
 }
 
+.bg-transparent-dark-med {
+    background-color: rgba(0, 0, 0, .50);
+}
+
+.bg-transparent-dark-heavy {
+    background-color: rgba(0, 0, 0, .80);
+}
+
 /* Books */
 .books {
     -moz-perspective: 100px;

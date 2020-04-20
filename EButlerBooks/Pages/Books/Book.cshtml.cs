@@ -27,7 +27,7 @@ namespace EButlerBooks.Pages.Books
 
         public async Task<IActionResult> OnGet(string url)
         {
-           
+
             // Get all the books
             Book = await (from s in _db.Books.Include(b => b.BookAuthors).ThenInclude(ba => ba.Author)
                           where s.Url == url
@@ -37,7 +37,7 @@ namespace EButlerBooks.Pages.Books
             {
                 return NotFound();
             }
-
+            
             return Page();
         }
     }

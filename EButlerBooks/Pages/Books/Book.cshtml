@@ -1,7 +1,7 @@
 ﻿@page "/Books/{url}"
 @model EButlerBooks.Pages.Books.BookModel
 @{
-    ViewData["Title"] = "Book";
+    ViewData["Title"] = Model.Book.Title;
 }
 
 <div class="d-flex">
