@@ -5,10 +5,10 @@
         @*If there is no cover art, use the title and first author to generate one*@
         @if (Model.ThumbImageUrl == null)
         {
-            <div class="img text-center pt-5 text-uppercase">
+            <div class="img text-center text-uppercase d-flex flex-column ">
                 <div class="h3">@Model.Title</div>
-                <small class="small mt-5">A Novel</small>
-                <p class="mt-5">
+                <small class="small ">A Novel</small>
+                <p class="mt-auto">
                     @Model.BookAuthors.FirstOrDefault()?.Author.FullName
                 </p>
             </div>

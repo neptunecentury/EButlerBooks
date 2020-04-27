@@ -69,53 +69,53 @@ footer {
     flex-shrink: 0;
 }
 
-.book {
-    display: inline-block;
-    position: relative;
-    -moz-perspective: 100px;
-    -moz-transform: rotateY(-3deg);
-    -webkit-transform: perspective(100) rotateY(-3deg);
-    outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
-    box-shadow: none;
-    margin: 0;
-    width: 12rem;
-    height: 19.2rem;
-}
-
-    .book img {
-        max-width: 100%;
+    .books .book {
+        display: inline-block;
+        position: relative;
+        -moz-perspective: 100px;
+        -moz-transform: rotateY(-3deg);
+        -webkit-transform: perspective(100) rotateY(-3deg);
+        outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+        box-shadow: none;
+        margin: 0;
+        width: 12rem;
+        height: 19.2rem;
     }
 
-    .book .img {
-        padding: 2rem;
-        height: 100%;
-        background-color: #ada5bb;
-    }
+        .books .book img {
+            max-width: 100%;
+        }
 
-    .book:before,
-    .book:after {
-        position: absolute;
-        top: 2%;
-        height: 96%;
-        content: ' ';
-        z-index: -1;
-    }
+        .books .book .img {
+            padding: 2rem;
+            height: 100%;
+            background-color: #ada5bb;
+        }
 
-    .book:before {
-        width: 100%;
-        left: 7.5%;
-        background-color: #5a2d18;
-        box-shadow: 5px 5px 20px #333;
-    }
+        .books .book:before,
+        .books .book:after {
+            position: absolute;
+            top: 2%;
+            height: 96%;
+            content: ' ';
+            z-index: -1;
+        }
 
-    .book:after {
-        width: 5%;
-        left: 100%;
-        background-color: #EFEFEF;
-        box-shadow: inset 0px 0px 5px #aaa;
-        -moz-transform: rotateY(20deg);
-        -webkit-transform: perspective(100) rotateY(20deg);
-    }
+        .books .book:before {
+            width: 100%;
+            left: 7.5%;
+            background-color: #5a2d18;
+            box-shadow: 5px 5px 20px #333;
+        }
+
+        .books .book:after {
+            width: 5%;
+            left: 100%;
+            background-color: #EFEFEF;
+            box-shadow: inset 0px 0px 5px #aaa;
+            -moz-transform: rotateY(20deg);
+            -webkit-transform: perspective(100) rotateY(20deg);
+        }
 
 /*Flat book for list*/
 .book-flat {
@@ -153,4 +153,35 @@ footer {
         flex-basis: 8rem;
         height: 12.8rem;
     }*/
+
+    /*.books {
+        flex-basis: 8rem;
+    }
+
+        .books .book {
+            width: 8rem;
+            height: 12.8rem;
+        }
+
+            .books .book .img {
+                padding: 1.5rem;
+                font-size: .75rem;
+            }
+
+                .books .book .img .h3 {
+                    font-size: 1rem;
+                }*/
+
+    /*.carousel-control-prev, .carousel-control-next {
+        top: 0;
+        bottom: 20vh;
+    }*/
+
+    .carousel-control-prev {
+        left: -1rem;
+    }
+
+    .carousel-control-next {
+        right: -1rem;
+    }
 }
