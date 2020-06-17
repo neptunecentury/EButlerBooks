@@ -11,6 +11,9 @@ body {
     background-color: #e5e5e5;
 }
 
+.navbar{
+    transition: all 500ms ease-in-out;
+}
 
 a.navbar-brand {
     white-space: normal;

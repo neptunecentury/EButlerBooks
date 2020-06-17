@@ -15,7 +15,7 @@
     <div class="d-flex flex-column h-100 ">
 
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+            <nav id="top-menu" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark fixed-top ">
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-page="/Index">E. C. Butler</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,10 +25,10 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Books/Index">Books</a>
+                                <a class="nav-link" asp-area="" asp-page="/Books/Index">Books</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/About">About Me</a>
+                                <a class="nav-link" asp-area="" asp-page="/About">About Me</a>
                             </li>
                         </ul>
                     </div>
@@ -57,10 +57,31 @@
     <script>
         // Define some global variables
         var appGlobal = {
-            backgroundImage: ""
+            backgroundImage: "/img/dark-world-background{0}.png"
         }
 
-        appGlobal.backgroundImage = '/img/dark-world-background{0}.png';
+        //appGlobal.backgroundImage = '/img/dark-world-background{0}.png';
+
+        var _stickyTop = false;
+        var _menu = $("#top-menu");
+
+        //navbar-light bg-white box-shadow
+        $(document).on("scroll", function (ev) {
+            var scrollTop = $("html").scrollTop();
+            // If the scroll top is more than 0, change the top menu to the sticky one
+            if (scrollTop > 0 && !_stickyTop) {
+                _menu.removeClass("navbar-dark ");
+                _menu.addClass("navbar-light bg-white box-shadow");
+                
+                _stickyTop = true;
+            }
+
+            if (scrollTop === 0 && _stickyTop) {
+                _menu.addClass("navbar-dark ");
+                _menu.removeClass("navbar-light bg-white box-shadow");
+                _stickyTop = false;
+            }
+        });
     </script>
 
     @*Initialization scripts from pages*@

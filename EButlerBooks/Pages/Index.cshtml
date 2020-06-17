@@ -62,9 +62,7 @@
 {
     <div class="mb-5" style="min-height: 100vh;">
 
-
-
-        <div class="d-flex" style="background-image: url('/img/dark-world-woods.png'); min-height: 600px; box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.75) !important; ">
+        <div class="d-flex" style="background-image: url('/img/dark-world-woods.png'); min-height: 800px; box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.75) !important; ">
             <div class="container my-auto">
                 <div class=" featured d-flex flex-column flex-lg-row align-items-start my-5 mx-auto ">
                     @await Html.PartialAsync("_3DBookPartial", Model.FeaturedBook)
@@ -77,8 +75,6 @@
 
                 </div>
             </div>
-
-
 
 
         </div>
@@ -109,7 +105,7 @@
 
 
         var _arrowHidden = false;
-
+        
         $(document).on("scroll", function (ev) {
             var scrollTop = $("html").scrollTop();
             // If the scroll top is more than 0, we can hide the arrow
