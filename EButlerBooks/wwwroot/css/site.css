@@ -185,3 +185,20 @@ footer {
         right: -1rem;
     }
 }
+
+/* Down arrow */
+.down-arrow {
+    animation: down-arrow 1s infinite;
+}
+
+/*Animation*/
+@keyframes down-arrow {
+    0% {
+        transform: translateY(-6rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

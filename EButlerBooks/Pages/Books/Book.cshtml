@@ -13,10 +13,14 @@
             <div class="card shadow-lg mb-5">
                 <div class="card-body">
                     @await Html.PartialAsync("_BookFullDescriptionPartial", Model.Book)
+
+                    <br />
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    <a class="btn btn-info" asp-page="/Books/Index">See all books</a>
                 </div>
             </div>
 
-            <a class="btn btn-info" asp-page="/Books/Index">See all books</a>
+            
         </div>
         
 

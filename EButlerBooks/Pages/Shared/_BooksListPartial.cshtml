@@ -2,7 +2,7 @@
 
 @foreach (var book in Model)
 {
-    <div class="d-flex flex-column flex-lg-row align-items-start mb-5 pb-lg-3 ">
+    <div class="d-flex flex-column flex-lg-row align-items-start ">
         <div class="book-flat mx-auto mx-lg-0 shadow-lg">
             @*If there is no cover art, use the title and first author to generate one*@
             @if (book.ThumbImageUrl == null)
@@ -30,4 +30,6 @@
         </div>
 
     </div>
+
+    <hr />
 }

@@ -1,10 +1,15 @@
 ﻿@model EButlerBooks.Models.Book
 
 <div class="mb-3">
+    <h1>
+        @Model.Title
+
+    </h1>
     @if (Model.ComingSoon)
     {
-        <span class="badge badge-warning">Coming Soon</span>
-        <br />
+        <p>
+            <span class="badge badge-warning small">Coming Soon</span>
+        </p>
     }
 
     @if (!string.IsNullOrWhiteSpace(Model.FullDescription))
