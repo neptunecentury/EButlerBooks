@@ -36,7 +36,7 @@
             </nav>
         </header>
 
-        <main role="main" class="container pb-3 flex-fill ">
+        <main role="main" class="pb-3 flex-fill ">
             @RenderBody()
         </main>
 
@@ -59,6 +59,8 @@
         var appGlobal = {
             backgroundImage: ""
         }
+
+        appGlobal.backgroundImage = '/img/dark-world-background{0}.png';
     </script>
 
     @*Initialization scripts from pages*@

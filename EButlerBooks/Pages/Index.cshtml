@@ -57,49 +57,71 @@
 
     </div>*@
 
-
-
 @* If we have a featured book, show it here*@
 @if (Model.FeaturedBook != null)
-    {
+{
+    <div class="mb-5" style="min-height: 100vh;">
 
-    <div class="d-flex flex-column " style="height: 100vh">
 
-        <div class="featured d-flex flex-column flex-lg-row align-items-start mt-5 mb-5 mx-auto ">
-            @await Html.PartialAsync("_3DBookPartial", Model.FeaturedBook)
 
-            <div class="card featured-description w-100 mt-5 mt-lg-0">
-                <div class="card-body">
-                    @await Html.PartialAsync("_BookDescriptionPartial", Model.FeaturedBook)
+        <div class="d-flex" style="background-image: url('/img/dark-world-woods.png'); min-height: 600px; box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.75) !important; ">
+            <div class="container my-auto">
+                <div class=" featured d-flex flex-column flex-lg-row align-items-start my-5 mx-auto ">
+                    @await Html.PartialAsync("_3DBookPartial", Model.FeaturedBook)
+
+                    <div class="card featured-description w-100 mt-5 mt-lg-0">
+                        <div class="card-body">
+                            @await Html.PartialAsync("_BookDescriptionPartial", Model.FeaturedBook)
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
+
+
+
         </div>
 
-        <div class="mt-auto mx-auto">
-            <div class="down-arrow">
+        <div class="d-none d-sm-block">
+            <div class="down-arrow ">
+
                 <i class="fas fa-chevron-down fa-5x"></i>
             </div>
         </div>
 
     </div>
-
-    }
-
+}
 
 
-<div>
+<div class="container">
     @*This section lists all works*@
     @await Html.PartialAsync("_BooksListPartial", Model.Books)
 </div>
 
 @section styles{
-    
+
 }
 
 @section initScripts{
 
     <script>
-        appGlobal.backgroundImage = '/img/dark-world-background{0}.png'
+
+
+        var _arrowHidden = false;
+
+        $(document).on("scroll", function (ev) {
+            var scrollTop = $("html").scrollTop();
+            // If the scroll top is more than 0, we can hide the arrow
+            if (scrollTop > 0 && !_arrowHidden) {
+                $(".down-arrow").hide();
+                _arrowHidden = true;
+            }
+
+            if (scrollTop === 0 && _arrowHidden) {
+                $(".down-arrow").show();
+                _arrowHidden = false;
+            }
+        });
     </script>
 }

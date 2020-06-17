@@ -4,7 +4,7 @@
     ViewData["Title"] = Model.Book.Title;
 }
 
-<div class="d-flex">
+<div class=" d-flex container">
 
     <div class="d-flex flex-column flex-lg-row align-items-start mt-5 mb-5 w-100">
         @await Html.PartialAsync("_3DBookPartial", Model.Book)
@@ -20,9 +20,10 @@
                 </div>
             </div>
 
-            
+
         </div>
-        
+
 
     </div>
 </div>
+

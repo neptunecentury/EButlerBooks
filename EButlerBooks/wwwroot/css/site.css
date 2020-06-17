@@ -20,6 +20,7 @@ a.navbar-brand {
 
 .featured-image {
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -141,7 +142,17 @@ footer {
             font-size: 1.25em;
         }
 
+/*Down arrow*/
+.down-arrow {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    animation: down-arrow 1s infinite;
+    color: #663e8c;
+}
 
+/*Media Queries*/
 @media screen and (max-width: 992px) {
 
     .featured {
@@ -186,17 +197,14 @@ footer {
     }
 }
 
-/* Down arrow */
-.down-arrow {
-    animation: down-arrow 1s infinite;
-}
 
 /*Animation*/
 @keyframes down-arrow {
     0% {
-        transform: translateY(-6rem);
+        transform: translateY(-4rem);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
