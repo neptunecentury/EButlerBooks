@@ -4,20 +4,27 @@
     ViewData["Title"] = "About";
 }
 
+@section headerContent{
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+}
+
+
 <div class="d-flex container">
 
-    <div class="d-flex flex-column flex-lg-row align-items-start mt-5 mb-5 w-100">
+    <div class="d-flex flex-column flex-lg-row align-items-start w-100">
         <div class="mx-auto ml-lg-0 mr-lg-5 shadow-lg">
             <img src="https://www.gravatar.com/avatar/@Model.ComputeHash("e.c.butler@outlook.com")?s=200" class="rounded" alt="Author E. C. Butler" />
         </div>
-        
+
         <div class="w-100 mt-5 mt-lg-0">
             <div class="card shadow-lg mb-5">
                 <div class="card-body">
-                    <h1>
-                        About Me
+                    <h2>
+                        About E. C. Butler
 
-                    </h1>
+                    </h2>
                     <p class="lead text-muted">
                         Father, Husband, Writer, Software Developer
                     </p>
@@ -40,10 +47,10 @@
 
                 </div>
 
-                
+
             </div>
 
-            
+
         </div>
 
 

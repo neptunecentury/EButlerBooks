@@ -36,7 +36,14 @@
             </nav>
         </header>
 
-        <main role="main" class="pb-3 flex-fill ">
+        <main role="main" class="pb-3 flex-fill " >
+
+            <div class="mb-3" style="@(ViewBag.FullScreen != null && ViewBag.FullScreen ? "min-height: 100vh" : "")">
+                <div class="d-flex shadow-heavy header-section">
+                    @RenderSection("headerContent", required: false)
+                </div>     
+            </div>
+            
             @RenderBody()
         </main>
 
@@ -71,14 +78,14 @@
             // If the scroll top is more than 0, change the top menu to the sticky one
             if (scrollTop > 0 && !_stickyTop) {
                 _menu.removeClass("navbar-dark ");
-                _menu.addClass("navbar-light bg-white box-shadow");
+                _menu.addClass("navbar-light bg-white shadow");
                 
                 _stickyTop = true;
             }
 
             if (scrollTop === 0 && _stickyTop) {
                 _menu.addClass("navbar-dark ");
-                _menu.removeClass("navbar-light bg-white box-shadow");
+                _menu.removeClass("navbar-light bg-white shadow");
                 _stickyTop = false;
             }
         });
