@@ -7,13 +7,16 @@ html {
 
 body {
     height: 100%;
-    
     background-color: #e5e5e5;
 }
 
-.navbar{
+.navbar {
     transition: all 500ms ease-in-out;
 }
+
+    .navbar.navbar-dark.bg-blend {
+        background-color: #301f46;
+    }
 
 a.navbar-brand {
     white-space: normal;
@@ -164,6 +167,12 @@ footer {
 }
 
 /*Media Queries*/
+@media screen and (min-width: 576px) {
+    .navbar.navbar-dark.bg-blend {
+        background-color: transparent !important;
+    }
+}
+
 @media screen and (max-width: 992px) {
 
     .featured {
