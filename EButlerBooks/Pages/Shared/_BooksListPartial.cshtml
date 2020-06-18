@@ -7,13 +7,14 @@
             @*If there is no cover art, use the title and first author to generate one*@
             @if (book.ThumbImageUrl == null)
             {
-                <div class="img text-center text-uppercase">
-                    <div class="h3">@book.Title</div>
-                    <small class="small mt-5">A Novel</small>
-                    <p class="mt-5">
-                        @book.BookAuthors.FirstOrDefault()?.Author.FullName
-                    </p>
-                </div>
+                @*<div class="img text-center text-uppercase">
+                <div class="h3">@book.Title</div>
+                <small class="small mt-5">A Novel</small>
+                <p class="mt-5">
+                    @book.BookAuthors.FirstOrDefault()?.Author.FullName
+                </p>
+            </div>*@
+                <img src="~/img/covers/no-cover.png" alt="@book.Title" />
             }
             else
             {
