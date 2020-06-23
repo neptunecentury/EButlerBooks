@@ -12,14 +12,14 @@ namespace EButlerBooks.Pages.Books
 {
     public class BookModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<BookModel> _logger;
         private readonly DbEntities _db;
 
         #region Public properties
         public Book Book { get; set; }
         #endregion
 
-        public BookModel(ILogger<IndexModel> logger, DbEntities db)
+        public BookModel(ILogger<BookModel> logger, DbEntities db)
         {
             _logger = logger;
             _db = db;

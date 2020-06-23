@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - E. C. Butler</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/noty/noty.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
 
     @RenderSection("styles", required: false)
 </head>
@@ -25,6 +27,9 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse ">
                         <ul class="navbar-nav flex-grow-1 ">
                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Books/Index">Books</a>
                             </li>
                             <li class="nav-item">
@@ -36,14 +41,14 @@
             </nav>
         </header>
 
-        <main role="main" class="pb-3 flex-fill " >
+        <main role="main" class="pb-3 flex-fill ">
 
             <div class="mb-3" style="@(ViewBag.FullScreen != null && ViewBag.FullScreen ? "min-height: 100vh" : "")">
                 <div class="d-flex shadow-heavy header-section">
                     @RenderSection("headerContent", required: false)
-                </div>     
+                </div>
             </div>
-            
+
             @RenderBody()
         </main>
 
@@ -54,12 +59,54 @@
         </footer>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="~/lib/enquire/enquire.min.js"></script>
+    <!-- Subscribe modal -->
+    <div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="order-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="order-modal-label">Get notified of releases</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-    <script src="~/lib/font-awesome/js/fontawesome.js"></script>
-    <script src="~/lib/font-awesome/js/solid.js"></script>
+                    <p>
+                        Enter your email, and I'll notify you of releases! Don't worry. I won't share or sell personal information.
+                    </p>
+
+                    <validation-observer v-slot="{ handleSubmit }">
+                        <validation-provider rules="email|required" v-slot="{ errors }">
+                            <div class="input-group mb-3">
+
+                                <input name="email" type="email" required class="form-control" placeholder="email address" v-model="email"
+                                       aria-label="Email address" aria-describedby="button-subscribe">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" id="button-subscribe" @@click.prevent="handleSubmit(subscribe)"
+                                            :disabled="!email">
+                                        Subscribe
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="text-danger">{{ errors[0] }}</span>
+                        </validation-provider>
+                    </validation-observer>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/enquire/enquire.min.js"></script>
+    <script src="~/lib/font-awesome/js/fontawesome.min.js"></script>
+    <script src="~/lib/font-awesome/js/solid.min.js"></script>
+    <script src="~/lib/noty/noty.min.js"></script>
+    <script src="~/lib/vue/vue.min.js"></script>
+    <script src="~/lib/vee-validate/vee-validate.full.min.js"></script>
 
     <script>
         // Define some global variables
@@ -67,28 +114,67 @@
             backgroundImage: "/img/dark-world-background{0}.png"
         }
 
-        //appGlobal.backgroundImage = '/img/dark-world-background{0}.png';
 
-        var _stickyTop = false;
-        var _menu = $("#top-menu");
+        $(function () {
 
-        //navbar-light bg-white box-shadow
-        $(document).on("scroll", function (ev) {
-            var scrollTop = $("html").scrollTop();
-            // If the scroll top is more than 0, change the top menu to the sticky one
-            if (scrollTop > 0 && !_stickyTop) {
-                _menu.removeClass("navbar-dark ");
-                _menu.addClass("navbar-light bg-white shadow");
-                
-                _stickyTop = true;
-            }
 
-            if (scrollTop === 0 && _stickyTop) {
-                _menu.addClass("navbar-dark ");
-                _menu.removeClass("navbar-light bg-white shadow");
-                _stickyTop = false;
-            }
-        });
+            var _stickyTop = false;
+            var _menu = $("#top-menu");
+
+            //navbar-light bg-white box-shadow
+            $(document).on("scroll", function (ev) {
+                var scrollTop = $("html").scrollTop();
+                // If the scroll top is more than 0, change the top menu to the sticky one
+                if (scrollTop > 0 && !_stickyTop) {
+                    _menu.removeClass("navbar-dark ");
+                    _menu.addClass("navbar-light bg-white shadow");
+
+                    _stickyTop = true;
+                }
+
+                if (scrollTop === 0 && _stickyTop) {
+                    _menu.addClass("navbar-dark ");
+                    _menu.removeClass("navbar-light bg-white shadow");
+                    _stickyTop = false;
+                }
+            });
+
+            // Turn on Popovers
+            $('[data-toggle="popover"]').popover();
+
+            // Configure Noty
+            Noty.overrideDefaults({
+                timeout: 3000,
+                progressBar: true,
+                theme: 'bootstrap-v4'
+            });
+
+            // Vue
+            Vue.component('validation-provider', VeeValidate.ValidationProvider);
+            Vue.component('validation-observer', VeeValidate.ValidationObserver);
+
+            // App instance
+            var app = new Vue({
+                el: '#order-modal',
+                data: {
+                    email: null
+                },
+                methods: {
+                    subscribe: function () {
+                        var vm = this;
+                        // Call api to subscribe
+                        $.post('@Url.RouteUrl("Subscribe")', { email: vm.email }).done(function (data) {
+
+                            // Clear the email
+                            vm.email = null;
+
+                            new Noty({ text: 'Subscribed', type: 'success' }).show();
+                        });
+                    }
+                }
+            })
+
+        })
     </script>
 
     @*Initialization scripts from pages*@

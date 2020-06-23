@@ -3,16 +3,25 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "vue@2.6.10",
-      "destination": "wwwroot/lib/vue/"
-    },
-    {
       "library": "enquire.js@2.1.6",
       "destination": "wwwroot/lib/enquire/"
     },
     {
       "library": "font-awesome@5.12.0-2",
       "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "vue@2.6.3",
+      "destination": "wwwroot/lib/vue/"
+    },
+    {
+      "library": "noty@3.1.4",
+      "destination": "wwwroot/lib/noty/"
+    },
+    {
+      "library": "vee-validate@3.3.5",
+      "destination": "wwwroot/lib/vee-validate/"
     }
+    
   ]
 }

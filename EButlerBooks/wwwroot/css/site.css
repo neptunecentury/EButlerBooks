@@ -10,6 +10,16 @@ body {
     background-color: #e5e5e5;
 }
 
+footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.80);
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
 .navbar {
     transition: all 500ms ease-in-out;
 }
@@ -30,6 +40,33 @@ a.navbar-brand {
     background-size: cover;
 }
 
+/*Custom Buttons*/
+.btn-primary {
+    color: #fff;
+    background-color: #9e7ec6;
+    border-color: #9e7ec6;
+}
+
+    .btn-primary:active, .btn-primary:hover,
+    .btn-primary:not(:disabled):not(.disabled):active {
+        color: #fff;
+        background-color: #705b8d;
+        border-color: #705b8d;
+    }
+
+        .btn-primary:focus,
+        .btn-primary.focus,
+        .btn-primary:not(:disabled):not(.disabled):active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(158, 126, 198, 0.50);
+        }
+
+    .btn-primary.disabled, .btn-primary:disabled {
+        color: #fff;
+        background-color: #d4c2eb;
+        border-color: #d4c2eb;
+    }
+
+
 .header-section {
     color: #fff;
     padding: 4rem 0;
@@ -40,14 +77,6 @@ a.navbar-brand {
 }
 
 
-footer {
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.80);
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-}
 
 .featured {
     max-width: 75%;
