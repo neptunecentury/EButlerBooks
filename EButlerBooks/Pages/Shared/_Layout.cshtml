@@ -169,6 +169,9 @@
                             vm.email = null;
 
                             new Noty({ text: 'Subscribed', type: 'success' }).show();
+
+                            // Hide the modal
+                            $("#order-modal").modal("hide");
                         });
                     }
                 }
