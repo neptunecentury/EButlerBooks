@@ -18,7 +18,15 @@
 
     </v-card>
 
-    <div v-for="book in books">{{ book.title }}</div>
+    <div v-for="book in books">
+      {{ book.title }}
+      <br />
+      Written by
+      <br />
+      <div v-for="author in book.bookAuthors.$values">
+      {{ author.firstName }}
+      </div>
+    </div>
 
 
   </v-container>
