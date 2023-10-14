@@ -12,6 +12,6 @@ namespace EButlerBooks.DataModels
         public string? LastName { get; set; }
         public string FullName{ get { return $"{FirstName} {LastName}"; } }
 
-        public IList<BookAuthors> BookAuthors { get; set; } = null!;
+        public virtual IList<BookAuthors> BookAuthors { get; set; } = null!;
     }
 }

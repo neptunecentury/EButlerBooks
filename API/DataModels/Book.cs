@@ -16,7 +16,7 @@ namespace EButlerBooks.DataModels
         public string? Url { get; set; }
         public bool ComingSoon { get; set; }
         public bool IsFeatured { get; set; }
-        public IList<BookAuthors> BookAuthors { get; set; } = null!;
-        public IList<BookGenres> BookGenres { get; set; } = null!;
+        public virtual IList<BookAuthors> BookAuthors { get; set; } = null!;
+        public virtual IList<BookGenres> BookGenres { get; set; } = null!;
     }
 }

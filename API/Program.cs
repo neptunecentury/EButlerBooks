@@ -1,5 +1,6 @@
 using EButlerBooks.DataModels;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var corsPolicyName = "CorsProductionWithOrigins";
@@ -10,10 +11,17 @@ var corsPolicyName = "CorsProductionWithOrigins";
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve)
+
 // Get connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // Create a DI service for DbEntities to be injected
-builder.Services.AddDbContext<DbEntities>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DbEntities>(options => {
+    options.UseSqlServer(connectionString);
+});
 
 builder.Services.AddCors(options =>
 {
@@ -54,7 +62,9 @@ app.UseCors(corsPolicyName);
 
 app.MapGet("/books", (DbEntities db) =>
 {
-    return db.Books;
+    return db.Books
+        .Include((b) => b.BookAuthors.Select((bg) => bg.Book))
+        .Include((b) => b.BookGenres.Select((bg) => bg.Genre));
 })
 .WithName("GetBooks")
 .WithOpenApi();

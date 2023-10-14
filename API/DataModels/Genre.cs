@@ -10,6 +10,6 @@ namespace EButlerBooks.DataModels
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        public IList<BookGenres> BookGenres { get; set; } = null!;
+        public virtual IList<BookGenres> BookGenres { get; set; } = null!;
     }
 }

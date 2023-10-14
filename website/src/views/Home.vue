@@ -18,7 +18,7 @@
 
     </v-card>
 
-    <div v-for="book in books">{{  book.title }}</div>
+    <div v-for="book in books">{{ book.title }}</div>
 
 
   </v-container>
@@ -27,10 +27,7 @@
 <script lang="ts" setup>
 import axios from 'axios'
 import { ref } from 'vue'
-
-interface Book{
-  title: string
-}
+import { Book } from '@/interfaces/models'
 
 const books = ref<Book[]>();
 

@@ -61,7 +61,7 @@ namespace EButlerBooks.DataModels
             modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 3, GenreId = 1 });
 
             // App settings
-            modelBuilder.Entity<AppSettings>().HasNoKey();//.HasData(new AppSettings { FeaturedBookId = 1 });
+            modelBuilder.Entity<AppSettings>().HasNoKey();
 
             base.OnModelCreating(modelBuilder);
         }
