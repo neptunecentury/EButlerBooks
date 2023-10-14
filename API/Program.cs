@@ -1,4 +1,5 @@
 using EButlerBooks.DataModels;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -11,15 +12,17 @@ var corsPolicyName = "CorsProductionWithOrigins";
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-builder.Services.AddControllersWithViews()
-    .AddJsonOptions(options =>
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve)
+// Set the JSON serializer options.
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 
 // Get connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // Create a DI service for DbEntities to be injected
-builder.Services.AddDbContext<DbEntities>(options => {
+builder.Services.AddDbContext<DbEntities>(options =>
+{
     options.UseSqlServer(connectionString);
 });
 
@@ -62,9 +65,11 @@ app.UseCors(corsPolicyName);
 
 app.MapGet("/books", (DbEntities db) =>
 {
-    return db.Books
-        .Include((b) => b.BookAuthors.Select((bg) => bg.Book))
-        .Include((b) => b.BookGenres.Select((bg) => bg.Genre));
+    var books = db.Books
+        .Include((b) => b.BookAuthors).ThenInclude(ba => ba.Author)
+        .Include((b) => b.BookGenres).ThenInclude(bg => bg.Genre);
+
+    return books;
 })
 .WithName("GetBooks")
 .WithOpenApi();

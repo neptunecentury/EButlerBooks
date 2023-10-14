@@ -41,6 +41,8 @@ async function getBooks(): Promise<void> {
     // Set the books
     if (booksResponse) {
       books.value = booksResponse.data//.map(b => {return <Book> { title: b.title }});
+
+        console.log(books.value)
     }
   }
   catch (ex) {
