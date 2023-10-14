@@ -1,3 +1,6 @@
+using EButlerBooks.DataModels;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 var corsPolicyName = "CorsProductionWithOrigins";
 
@@ -7,6 +10,11 @@ var corsPolicyName = "CorsProductionWithOrigins";
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Get connection string
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// Create a DI service for DbEntities to be injected
+builder.Services.AddDbContext<DbEntities>(options => options.UseSqlServer(connectionString));
+
 builder.Services.AddCors(options =>
 {
 #if DEBUG
@@ -14,7 +22,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: corsPolicyName,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:8080")
+                          policy.WithOrigins("http://localhost:8080", "http://localhost:3000")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                       });
@@ -43,29 +51,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(corsPolicyName);
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/books", (DbEntities db) =>
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    return db.Books;
 })
-.WithName("GetWeatherForecast")
+.WithName("GetBooks")
 .WithOpenApi();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
