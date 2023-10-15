@@ -40,11 +40,13 @@ namespace EButlerBooks.DataModels
 
             // Authors
             modelBuilder.Entity<Author>().HasData(new Author { Id = 1, FirstName = "Eric", LastName = "Butler" });
+            //modelBuilder.Entity<Author>().HasData(new Author { Id = 2, FirstName = "Jared", LastName = "Lassetter" });
 
             // Dark World
             modelBuilder.Entity<Book>().HasData(new Book { Id = 1, Title = "Dark World", Description = "A book about a dark world.", FullDescription = "In a world where darkness is everywhere, one woman fights to bring it light." });
 
             modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 1 });
+            //modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 2, BookId = 1 });
             modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 1, GenreId = 1 });
             modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 1, GenreId = 2 });
 

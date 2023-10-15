@@ -6,14 +6,17 @@ export interface Book {
     id: number,
     title: string,
     description: string,
-    bookAuthors: BookAuthors
+    authors: Array<Author>,
+    genres: Array<Genre>
 }
 
 export interface Author {
     firstName: string,
-    lastName: string
+    lastName: string,
+    fullName: string
 }
 
-export interface BookAuthors {
-    $values: Array<Author>
+export interface Genre {
+    id: number,
+    name: string
 }

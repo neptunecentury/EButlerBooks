@@ -23,8 +23,12 @@
       <br />
       Written by
       <br />
-      <div v-for="author in book.bookAuthors.$values">
-      {{ author.firstName }}
+      <div v-for="author in book.authors">
+      {{ author.fullName }}
+      </div>
+      Genres:
+      <div v-for="genre in book.genres">
+      {{ genre.name }}
       </div>
     </div>
 

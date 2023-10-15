@@ -1,4 +1,5 @@
 using EButlerBooks.DataModels;
+using EButlerBooks.DTOs;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -15,7 +16,7 @@ builder.Services.AddSwaggerGen();
 // Set the JSON serializer options.
 builder.Services.Configure<JsonOptions>(options =>
 {
-    options.SerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 // Get connection string
@@ -67,9 +68,27 @@ app.MapGet("/books", (DbEntities db) =>
 {
     var books = db.Books
         .Include((b) => b.BookAuthors).ThenInclude(ba => ba.Author)
-        .Include((b) => b.BookGenres).ThenInclude(bg => bg.Genre);
+        .Include((b) => b.BookGenres).ThenInclude(bg => bg.Genre)
+        .Select((b) => new BookResponse()
+        {
+            Id = b.Id,
+            Title = b.Title,
+            Description = b.Description,
+            Authors = b.BookAuthors.Select(ba => new AuthorResponse()
+            {
+                Id = ba.AuthorId,
+                FirstName = ba.Author.FirstName,
+                LastName = ba.Author.LastName
+            }).ToArray(),
+            Genres = b.BookGenres.Select(bg => new GenreResponse()
+            {
+                Id = bg.GenreId,
+                Name = bg.Genre.Name
+            }).ToArray()
+        });
 
-    return books;
+    return books.ToArray();
+
 })
 .WithName("GetBooks")
 .WithOpenApi();
