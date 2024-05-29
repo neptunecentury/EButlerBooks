@@ -43,7 +43,14 @@ namespace EButlerBooks.DataModels
             //modelBuilder.Entity<Author>().HasData(new Author { Id = 2, FirstName = "Jared", LastName = "Lassetter" });
 
             // Dark World
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 1, Title = "Dark World", Description = "A book about a dark world.", FullDescription = "In a world where darkness is everywhere, one woman fights to bring it light." });
+            modelBuilder.Entity<Book>().HasData(new Book {
+                Id = 1,
+                Title = "Dark World",
+                Description = "A book about a dark world.",
+                FullDescription = "In a world where darkness is everywhere, one woman fights to bring it light.",
+                ImageUrl = "dark-world-cover.png",
+                ThumbImageUrl = "dark-world-cover-thumb.png"
+            });
 
             modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 1 });
             //modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 2, BookId = 1 });
@@ -61,6 +68,12 @@ namespace EButlerBooks.DataModels
 
             modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 3 });
             modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 3, GenreId = 1 });
+
+            // Ashes of the Earthborne
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 4, Title = "Ashes of the Earthborne", Description = "A young princess fights to reclaim her kingdom", FullDescription = "A young princess fights to reclaim her throne after a coup led to the death of her mother and father. But how far will she go get take back her kingdom?" });
+
+            modelBuilder.Entity<BookAuthors>().HasData(new BookAuthors { AuthorId = 1, BookId = 4 });
+            modelBuilder.Entity<BookGenres>().HasData(new BookGenres { BookId = 4, GenreId = 1 });
 
             // App settings
             modelBuilder.Entity<AppSettings>().HasNoKey();

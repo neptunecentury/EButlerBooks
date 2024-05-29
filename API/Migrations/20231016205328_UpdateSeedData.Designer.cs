@@ -4,6 +4,7 @@ using EButlerBooks.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DbEntities))]
-    partial class DbEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20231016205328_UpdateSeedData")]
+    partial class UpdateSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,15 +130,6 @@ namespace API.Migrations
                             FullDescription = "Boy kidnaps girl and takes her to a fantasy realm to help him find his long-lost sister.",
                             IsFeatured = false,
                             Title = "Fantasy"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ComingSoon = false,
-                            Description = "A young princess fights to reclaim her kingdom",
-                            FullDescription = "A young princess fights to reclaim her throne after a coup led to the death of her mother and father. But how far will she go get take back her kingdom?",
-                            IsFeatured = false,
-                            Title = "Ashes of the Earthborne"
                         });
                 });
 
@@ -168,11 +162,6 @@ namespace API.Migrations
                         {
                             AuthorId = 1,
                             BookId = 3
-                        },
-                        new
-                        {
-                            AuthorId = 1,
-                            BookId = 4
                         });
                 });
 
@@ -210,11 +199,6 @@ namespace API.Migrations
                         {
                             GenreId = 1,
                             BookId = 3
-                        },
-                        new
-                        {
-                            GenreId = 1,
-                            BookId = 4
                         });
                 });
 

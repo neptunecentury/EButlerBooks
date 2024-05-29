@@ -5,7 +5,7 @@
  */
 
 // Components
-import App from '@/layouts/default/Default.vue'
+import App from '@/App.vue'
 
 // Composables
 import { createApp } from 'vue'

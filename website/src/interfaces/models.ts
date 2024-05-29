@@ -7,7 +7,9 @@ export interface Book {
     title: string,
     description: string,
     authors: Array<Author>,
-    genres: Array<Genre>
+    genres: Array<Genre>,
+    imageUrl: string,
+    thumbImageUrl: string
 }
 
 export interface Author {

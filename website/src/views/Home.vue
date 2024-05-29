@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  
     <v-card color="blue-lighten-2" elevation="12">
 
       <v-card-text>
@@ -18,30 +18,47 @@
 
     </v-card>
 
-    <div v-for="book in books">
-      {{ book.title }}
-      <br />
-      Written by
-      <br />
-      <div v-for="author in book.authors">
-      {{ author.fullName }}
-      </div>
-      Genres:
-      <div v-for="genre in book.genres">
-      {{ genre.name }}
-      </div>
+    <div>
+      <h2>Check out some of my works</h2>
     </div>
 
+    <div class="d-flex mt-5">
+      <v-row>
+        <v-col v-for="book in books" :cols="xs ? 12 : 4">
+          <v-card elevation="12">
 
-  </v-container>
+            <v-card-title>
+              {{ book.title }}
+            </v-card-title>
+
+            <v-img class="bg-white" width="100%"
+              :src="`/covers/${book.thumbImageUrl ? book.thumbImageUrl : 'no-cover.png'}`" cover></v-img>
+
+            <v-card-Text>
+              <p>{{ book.description }}</p>
+              
+              <v-chip class="mt-2 mr-2" v-for="genre in book.genres" :text="genre.name"></v-chip>
+            </v-card-Text>
+
+            
+
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
+
 </template>
 
 <script lang="ts" setup>
 import axios from 'axios'
 import { ref } from 'vue'
 import { Book } from '@/interfaces/models'
+import { useDisplay } from 'vuetify'
 
-const books = ref<Book[]>();
+// Destructure only the keys you want to use
+const { xs } = useDisplay()
+
+const books = ref<Book[]>()
 
 /**
  * Gets books from the API
@@ -54,7 +71,7 @@ async function getBooks(): Promise<void> {
     if (booksResponse) {
       books.value = booksResponse.data//.map(b => {return <Book> { title: b.title }});
 
-        console.log(books.value)
+      console.log(books.value)
     }
   }
   catch (ex) {
@@ -64,6 +81,6 @@ async function getBooks(): Promise<void> {
 }
 
 // Get books from API
-getBooks();
+getBooks()
 
 </script>
